@@ -1,27 +1,36 @@
-import './App.css';
+import Header from "./components/Header";
+import PageHeading from "./components/PageHeading";
+import CategoryList from "./components/CategoryList";
+import PopularCourses from "./components/PopularCourses";
+import CourseList from "./components/CourseList";
+import Footer from "./components/Footer";
+import { categories, courses, popularCourses } from "./data/courses";
+import "./App.css";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src="Octocat.png" className="App-logo" alt="logo" />
-        <p>
-          GitHub Codespaces <span className="heart">♥️</span> React
-        </p>
-        <p className="small">
-          Edit <code>src/App.jsx</code> and save to reload.
-        </p>
-        <p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </p>
-      </header>
+    <div className="app-wrapper">
+      <Header />
+
+      <main id="koolitused" className="main-content">
+        <PageHeading
+          title="Koolitused"
+          subtitle="Leia endale sobiv koolitus ja arenda oma teadmisi."
+        />
+
+        <CategoryList categories={categories} />
+
+        <PopularCourses courses={popularCourses} />
+
+        <section className="catalog-section" aria-labelledby="all-courses-heading">
+          <h2 id="all-courses-heading" className="section-title">
+            Kõik koolitused
+          </h2>
+          <CourseList courses={courses} />
+        </section>
+      </main>
+
+      <Footer />
     </div>
   );
 }
